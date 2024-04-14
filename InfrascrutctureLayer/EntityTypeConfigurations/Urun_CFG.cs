@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Entities.Concrete;
+using InfrastructureLayer.EntityTypeConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,10 +10,11 @@ using System.Threading.Tasks;
 
 namespace InfrascrutctureLayer.EntityTypeConfigurations
 {
-    public class Urun_CFG : IEntityTypeConfiguration<Urun>
+    public class Urun_CFG : Base_CFG<Urun>, IEntityTypeConfiguration<Urun>
     {
         public void Configure(EntityTypeBuilder<Urun> builder)
         {
+            base.Configure(builder);
             builder.Property(x => x.UrunAdi)
                  .HasColumnType("varchar")
                  .HasMaxLength(100)
@@ -32,6 +34,12 @@ namespace InfrascrutctureLayer.EntityTypeConfigurations
                 .HasColumnType("varchar")
                 .HasMaxLength(100)
                 .IsRequired(false);
+            //builder.Property(x => x.EklenmeTarihi)
+            //   .HasColumnType("smalldatetime");
+            //builder.Property(x => x.GüncellenmeTarihi)
+            //    .HasColumnType("smalldatetime");
+            //builder.Property(x => x.PasiflestirildiTarihi)
+            //    .HasColumnType("smalldatetime");
         }
     }
 }

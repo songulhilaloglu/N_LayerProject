@@ -8,6 +8,6 @@ namespace DomainLayer.Enums
 {
     public enum KayitDurumu
     {
-        Aktif, Güncellendi, Pasif
+        Aktif = 1, Güncellendi, Pasif
     }
 }

@@ -14,8 +14,8 @@ namespace DomainLayer.Entities.Concrete
         public string KategoriAdi { get; set; }
 
         public DateTime EklenmeTarihi { get; set; }
-        public DateTime GüncellenmeTarihi { get; set; }
-        public DateTime PasiflestirildiTarihi { get; set; }
+        public DateTime? GüncellenmeTarihi { get; set; }
+        public DateTime? PasiflestirildiTarihi { get; set; }
         public KayitDurumu KayitDurumu { get; set; }
 
         public ICollection<Urun> Urunler { get; set; }

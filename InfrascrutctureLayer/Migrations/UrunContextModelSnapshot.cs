@@ -31,10 +31,10 @@ namespace InfrastructureLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KategoriID"));
 
                     b.Property<DateTime>("EklenmeTarihi")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("smalldatetime");
 
-                    b.Property<DateTime>("GüncellenmeTarihi")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("GüncellenmeTarihi")
+                        .HasColumnType("smalldatetime");
 
                     b.Property<string>("KategoriAdi")
                         .IsRequired()
@@ -44,8 +44,8 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int>("KayitDurumu")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PasiflestirildiTarihi")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("PasiflestirildiTarihi")
+                        .HasColumnType("smalldatetime");
 
                     b.HasKey("KategoriID");
 
@@ -55,29 +55,23 @@ namespace InfrastructureLayer.Migrations
                         new
                         {
                             KategoriID = 1,
-                            EklenmeTarihi = new DateTime(2024, 4, 13, 14, 12, 41, 320, DateTimeKind.Local).AddTicks(102),
-                            GüncellenmeTarihi = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EklenmeTarihi = new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5243),
                             KategoriAdi = "Elektronik",
-                            KayitDurumu = 0,
-                            PasiflestirildiTarihi = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            KayitDurumu = 1
                         },
                         new
                         {
                             KategoriID = 2,
-                            EklenmeTarihi = new DateTime(2024, 4, 13, 14, 12, 41, 320, DateTimeKind.Local).AddTicks(113),
-                            GüncellenmeTarihi = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EklenmeTarihi = new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5256),
                             KategoriAdi = "Hediyelik Eşya",
-                            KayitDurumu = 0,
-                            PasiflestirildiTarihi = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            KayitDurumu = 1
                         },
                         new
                         {
                             KategoriID = 3,
-                            EklenmeTarihi = new DateTime(2024, 4, 13, 14, 12, 41, 320, DateTimeKind.Local).AddTicks(115),
-                            GüncellenmeTarihi = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EklenmeTarihi = new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5257),
                             KategoriAdi = "Hobi",
-                            KayitDurumu = 0,
-                            PasiflestirildiTarihi = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            KayitDurumu = 1
                         });
                 });
 
@@ -137,16 +131,16 @@ namespace InfrastructureLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EklenmeTarihi")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("smalldatetime");
 
-                    b.Property<DateTime>("GüncellenmeTarihi")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("GüncellenmeTarihi")
+                        .HasColumnType("smalldatetime");
 
                     b.Property<int>("KayitDurumu")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PasiflestirildiTarihi")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("PasiflestirildiTarihi")
+                        .HasColumnType("smalldatetime");
 
                     b.Property<int>("UrunID")
                         .HasColumnType("int");
@@ -176,13 +170,13 @@ namespace InfrastructureLayer.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<DateTime>("EklenmeTarihi")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("smalldatetime");
 
                     b.Property<decimal>("Fiyat")
                         .HasColumnType("money");
 
-                    b.Property<DateTime>("GüncellenmeTarihi")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("GüncellenmeTarihi")
+                        .HasColumnType("smalldatetime");
 
                     b.Property<int>("KategoriID")
                         .HasColumnType("int");
@@ -190,8 +184,8 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int>("KayitDurumu")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PasiflestirildiTarihi")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("PasiflestirildiTarihi")
+                        .HasColumnType("smalldatetime");
 
                     b.Property<string>("Resim")
                         .IsRequired()
@@ -303,15 +297,15 @@ namespace InfrastructureLayer.Migrations
                             AccessFailedCount = 0,
                             Ad = "Super",
                             Adres = "Ankara",
-                            ConcurrencyStamp = "15e79fbc-6af2-41a7-800e-1e3191d45cf2",
+                            ConcurrencyStamp = "26ec2042-cdf4-40b3-9120-01177e9b4b2a",
                             Email = "admin@deneme.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DENEME.COM",
                             NormalizedUserName = "SUPERADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMB2NcPAlajlHPcoRXummcp24apqtnrWABjIXJJALjF5ABztvcI7p3sEszLsfNwzGw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED17KNUZr+ncE9gjaZbMPe/JuofVEGPOKWMAENjXH5Glq/K6MSh27UL6pGKCvcxZAw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "29bf1ad4-a424-4d12-8634-300417b299f2",
+                            SecurityStamp = "5e5df8cf-1bf9-4931-9cf6-ca54896f169f",
                             Soyad = "Admin",
                             TwoFactorEnabled = false,
                             UserName = "superAdmin"

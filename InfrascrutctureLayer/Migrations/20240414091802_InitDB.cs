@@ -64,9 +64,9 @@ namespace InfrastructureLayer.Migrations
                     KategoriID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     KategoriAdi = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    EklenmeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GüncellenmeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PasiflestirildiTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EklenmeTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    GüncellenmeTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    PasiflestirildiTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: true),
                     KayitDurumu = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -191,9 +191,9 @@ namespace InfrastructureLayer.Migrations
                     Resim = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Aciklama = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
                     UrunVideosu = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
-                    EklenmeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GüncellenmeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PasiflestirildiTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EklenmeTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    GüncellenmeTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    PasiflestirildiTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: true),
                     KayitDurumu = table.Column<int>(type: "int", nullable: false),
                     KategoriID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -215,9 +215,9 @@ namespace InfrastructureLayer.Migrations
                     SepetID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Adet = table.Column<int>(type: "int", nullable: false),
-                    EklenmeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GüncellenmeTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PasiflestirildiTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EklenmeTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    GüncellenmeTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    PasiflestirildiTarihi = table.Column<DateTime>(type: "smalldatetime", nullable: true),
                     KayitDurumu = table.Column<int>(type: "int", nullable: false),
                     UyeID = table.Column<int>(type: "int", nullable: false),
                     UrunID = table.Column<int>(type: "int", nullable: false)
@@ -251,16 +251,16 @@ namespace InfrastructureLayer.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Ad", "Adres", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Soyad", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "Super", "Ankara", "15e79fbc-6af2-41a7-800e-1e3191d45cf2", "admin@deneme.com", false, false, null, "ADMIN@DENEME.COM", "SUPERADMIN", "AQAAAAIAAYagAAAAEMB2NcPAlajlHPcoRXummcp24apqtnrWABjIXJJALjF5ABztvcI7p3sEszLsfNwzGw==", null, false, "29bf1ad4-a424-4d12-8634-300417b299f2", "Admin", false, "superAdmin" });
+                values: new object[] { 1, 0, "Super", "Ankara", "26ec2042-cdf4-40b3-9120-01177e9b4b2a", "admin@deneme.com", false, false, null, "ADMIN@DENEME.COM", "SUPERADMIN", "AQAAAAIAAYagAAAAED17KNUZr+ncE9gjaZbMPe/JuofVEGPOKWMAENjXH5Glq/K6MSh27UL6pGKCvcxZAw==", null, false, "5e5df8cf-1bf9-4931-9cf6-ca54896f169f", "Admin", false, "superAdmin" });
 
             migrationBuilder.InsertData(
                 table: "Kategoriler",
                 columns: new[] { "KategoriID", "EklenmeTarihi", "GüncellenmeTarihi", "KategoriAdi", "KayitDurumu", "PasiflestirildiTarihi" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 4, 13, 14, 12, 41, 320, DateTimeKind.Local).AddTicks(102), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Elektronik", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, new DateTime(2024, 4, 13, 14, 12, 41, 320, DateTimeKind.Local).AddTicks(113), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hediyelik Eşya", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, new DateTime(2024, 4, 13, 14, 12, 41, 320, DateTimeKind.Local).AddTicks(115), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hobi", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5243), null, "Elektronik", 1, null },
+                    { 2, new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5256), null, "Hediyelik Eşya", 1, null },
+                    { 3, new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5257), null, "Hobi", 1, null }
                 });
 
             migrationBuilder.CreateIndex(
