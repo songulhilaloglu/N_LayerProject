@@ -14,7 +14,8 @@ namespace DomainLayer.Repositories.Abstract
         Task<bool> GuncelleAsync(TEntity entity);
         Task<bool> SilAsync(int id);
         Task<TEntity> AraAsync(int id);
-        Task<IEnumerable<TEntity>> TumunuListeleAsync();
+        Task<IEnumerable<TEntity>> TumAktifleriListeleAsync();
+        Task<IEnumerable<TEntity>> TumPasifleriListeleAsync();
 
     }
 }

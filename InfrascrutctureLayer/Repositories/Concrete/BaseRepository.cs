@@ -21,29 +21,49 @@ namespace InfrastructureLayer.Repositories.Concrete
         }
         public async Task EkleAsync(TEntity entity)
         {
+            entity.EklenmeTarihi = DateTime.Now;
+            entity.KayitDurumu = DomainLayer.Enums.KayitDurumu.Aktif;
             await _table.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
         }
 
-        public Task<TEntity> AraAsync(int id)
+        public async Task<TEntity> AraAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _table.FindAsync(id);
         }
 
         
-        public Task<bool> GuncelleAsync(TEntity entity)
+        public async Task<bool> GuncelleAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            entity.GüncellenmeTarihi = DateTime.Now;
+            entity.KayitDurumu = DomainLayer.Enums.KayitDurumu.Güncellendi;
+            _table.Update(entity);
+
+            bool updateCalistiMi = await _context.SaveChangesAsync() > 0;
+            return updateCalistiMi;
+            //return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<bool> SilAsync(int id)
+        public async Task<bool> SilAsync(int id)
         {
-            throw new NotImplementedException();
+            TEntity entity = await AraAsync(id);
+
+            entity.PasiflestirildiTarihi = DateTime.Now;
+            entity.KayitDurumu = DomainLayer.Enums.KayitDurumu.Pasif;
+
+            _table.Update(entity);
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<IEnumerable<TEntity>> TumunuListeleAsync()
+        public async Task<IEnumerable<TEntity>> TumAktifleriListeleAsync()
         {
-            throw new NotImplementedException();
+           return await _table.Where(x => x.KayitDurumu != DomainLayer.Enums.KayitDurumu.Pasif).ToListAsync();
+        }
+
+        public async Task<IEnumerable<TEntity>> TumPasifleriListeleAsync()
+        {
+            return await _table.Where(x => x.KayitDurumu == DomainLayer.Enums.KayitDurumu.Pasif).ToListAsync();
         }
     }
 }
