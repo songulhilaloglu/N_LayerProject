@@ -55,21 +55,21 @@ namespace InfrastructureLayer.Migrations
                         new
                         {
                             KategoriID = 1,
-                            EklenmeTarihi = new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5243),
+                            EklenmeTarihi = new DateTime(2024, 4, 21, 13, 58, 3, 682, DateTimeKind.Local).AddTicks(4861),
                             KategoriAdi = "Elektronik",
                             KayitDurumu = 1
                         },
                         new
                         {
                             KategoriID = 2,
-                            EklenmeTarihi = new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5256),
+                            EklenmeTarihi = new DateTime(2024, 4, 21, 13, 58, 3, 682, DateTimeKind.Local).AddTicks(4875),
                             KategoriAdi = "Hediyelik Eşya",
                             KayitDurumu = 1
                         },
                         new
                         {
                             KategoriID = 3,
-                            EklenmeTarihi = new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5257),
+                            EklenmeTarihi = new DateTime(2024, 4, 21, 13, 58, 3, 682, DateTimeKind.Local).AddTicks(4876),
                             KategoriAdi = "Hobi",
                             KayitDurumu = 1
                         });
@@ -297,15 +297,15 @@ namespace InfrastructureLayer.Migrations
                             AccessFailedCount = 0,
                             Ad = "Super",
                             Adres = "Ankara",
-                            ConcurrencyStamp = "26ec2042-cdf4-40b3-9120-01177e9b4b2a",
+                            ConcurrencyStamp = "3e80d841-b91e-476d-9724-90925b6e47ea",
                             Email = "admin@deneme.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DENEME.COM",
                             NormalizedUserName = "SUPERADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAED17KNUZr+ncE9gjaZbMPe/JuofVEGPOKWMAENjXH5Glq/K6MSh27UL6pGKCvcxZAw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEc73mN8bkaz6dgvkiJtckMMHfZNHN++DPqk2g4O0ao2urKdiJAD0FsrP1aZ5e257A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5e5df8cf-1bf9-4931-9cf6-ca54896f169f",
+                            SecurityStamp = "27b8f87b-c606-4e2d-b7af-1915d608a22e",
                             Soyad = "Admin",
                             TwoFactorEnabled = false,
                             UserName = "superAdmin"
@@ -394,6 +394,13 @@ namespace InfrastructureLayer.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>

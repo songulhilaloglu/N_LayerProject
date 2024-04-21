@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.Services.KategoriService
 {
-    public class KategoriService
+    public class KategoriService : IKategoriService
     {
     }
 }

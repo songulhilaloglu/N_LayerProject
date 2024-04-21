@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.Services.SepetService
 {
-    public class SepetService
+    public class SepetService : ISepetService
     {
+
     }
 }

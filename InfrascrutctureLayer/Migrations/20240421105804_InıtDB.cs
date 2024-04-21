@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InfrastructureLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDB : Migration
+    public partial class InıtDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -251,17 +251,22 @@ namespace InfrastructureLayer.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Ad", "Adres", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Soyad", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "Super", "Ankara", "26ec2042-cdf4-40b3-9120-01177e9b4b2a", "admin@deneme.com", false, false, null, "ADMIN@DENEME.COM", "SUPERADMIN", "AQAAAAIAAYagAAAAED17KNUZr+ncE9gjaZbMPe/JuofVEGPOKWMAENjXH5Glq/K6MSh27UL6pGKCvcxZAw==", null, false, "5e5df8cf-1bf9-4931-9cf6-ca54896f169f", "Admin", false, "superAdmin" });
+                values: new object[] { 1, 0, "Super", "Ankara", "3e80d841-b91e-476d-9724-90925b6e47ea", "admin@deneme.com", false, false, null, "ADMIN@DENEME.COM", "SUPERADMIN", "AQAAAAIAAYagAAAAEEc73mN8bkaz6dgvkiJtckMMHfZNHN++DPqk2g4O0ao2urKdiJAD0FsrP1aZ5e257A==", null, false, "27b8f87b-c606-4e2d-b7af-1915d608a22e", "Admin", false, "superAdmin" });
 
             migrationBuilder.InsertData(
                 table: "Kategoriler",
                 columns: new[] { "KategoriID", "EklenmeTarihi", "GüncellenmeTarihi", "KategoriAdi", "KayitDurumu", "PasiflestirildiTarihi" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5243), null, "Elektronik", 1, null },
-                    { 2, new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5256), null, "Hediyelik Eşya", 1, null },
-                    { 3, new DateTime(2024, 4, 14, 12, 18, 2, 498, DateTimeKind.Local).AddTicks(5257), null, "Hobi", 1, null }
+                    { 1, new DateTime(2024, 4, 21, 13, 58, 3, 682, DateTimeKind.Local).AddTicks(4861), null, "Elektronik", 1, null },
+                    { 2, new DateTime(2024, 4, 21, 13, 58, 3, 682, DateTimeKind.Local).AddTicks(4875), null, "Hediyelik Eşya", 1, null },
+                    { 3, new DateTime(2024, 4, 21, 13, 58, 3, 682, DateTimeKind.Local).AddTicks(4876), null, "Hobi", 1, null }
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { 1, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -1,5 +1,6 @@
 ﻿using ApplicationLayer.Models.DTOs;
 using ApplicationLayer.Models.ViewModels;
+using AutoMapper;
 using DomainLayer.Entities.Concrete;
 using DomainLayer.Repositories.Abstract;
 using InfrastructureLayer.Repositories.Concrete;
@@ -13,48 +14,57 @@ namespace ApplicationLayer.Services.UrunService
 {
     public class UrunService : IUrunService
     {
-        private readonly UrunRepository urunRepo;
+        private readonly IUrunRepository _urunRepo;
+        private readonly IMapper _mapper;
 
-        public UrunService(UrunRepository _urunRepo)
+        public UrunService(IUrunRepository urunRepo, IMapper mapper)
         {
-            urunRepo = _urunRepo;
+            _urunRepo = urunRepo;
+            _mapper = mapper;
         }
 
-        public Task<IEnumerable<UrunVM>> KategoriyeAitUrunlerAsync(int katID)
+        public async Task<IEnumerable<UrunVM>> KategoriyeAitUrunlerAsync(int katID)
         {
-            throw new NotImplementedException();
+            List<Urun> urunler = _urunRepo.TumAktifleriListeleAsync().Result.Where(x => x.KategoriID == katID).ToList();
+            List<UrunVM> urunlerVM = new List<UrunVM>();
+            return urunlerVM;
         }
 
-        public Task<IEnumerable<UrunVM>> TumUrunlerAsync()
+        public async Task<IEnumerable<UrunVM>> TumUrunlerAsync()
         {
-            throw new NotImplementedException();
+            List<Urun> urunler = _urunRepo.TumAktifleriListeleAsync().Result.ToList();
+            List<UrunVM> urunlerVM = new List<UrunVM>();
+            _mapper.Map(urunler, urunlerVM);
+
+            return urunlerVM;
         }
 
-        public Task<UrunDetayVM> UrunBulAsync(int id)
+        public async Task<UrunDetayVM> UrunBulAsync(int id)
         {
-            throw new NotImplementedException();
+            Urun urun = await _urunRepo.AraAsync(id);
+
+            UrunDetayVM urunDetay = new UrunDetayVM();
+            _mapper.Map(urun, urunDetay);
+            return urunDetay;
         }
 
         public async Task UrunEkleAsync(UrunEkleDTO urunEkleDTO)
         {
             Urun urun = new Urun();
-            urun.UrunAdi = urunEkleDTO.UrunAdi;
-            urun.Resim = urunEkleDTO.Resim;
-            urun.Fiyat = urunEkleDTO.Fiyat;
-            urun.Aciklama = urunEkleDTO.Aciklama;
-            urun.KategoriID = urunEkleDTO.KategoriID;
-
+            _mapper.Map(urunEkleDTO, urun);
             await _urunRepo.EkleAsync(urun);
         }
 
-        public Task<bool> UrunGüncelleAsync(UrunGuncelleDTO urunGuncelleDTO)
+        public async Task<bool> UrunGüncelleAsync(UrunGuncelleDTO urunGuncelleDTO)
         {
-            throw new NotImplementedException();
+            Urun urun = new Urun();
+            _mapper.Map(urunGuncelleDTO, urun);
+            return await _urunRepo.GuncelleAsync(urun); 
         }
 
-        public Task<bool> UrunSilAsync(int id)
+        public async Task<bool> UrunSilAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _urunRepo.SilAsync(id);
         }
     }
 }

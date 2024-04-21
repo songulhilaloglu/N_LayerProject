@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Entities.Concrete;
 using InfrascrutctureLayer.EntityTypeConfigurations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -42,6 +43,8 @@ namespace InfrastructureLayer
             builder.ApplyConfiguration(new Sepet_CFG());
             builder.ApplyConfiguration(new Kategori_CFG());
             builder.ApplyConfiguration(new Rol_CFG());
+
+            builder.Entity<IdentityUserRole<int>>().HasData(new IdentityUserRole<int>() { UserId = 1, RoleId = 1 });
         }
     }
 }

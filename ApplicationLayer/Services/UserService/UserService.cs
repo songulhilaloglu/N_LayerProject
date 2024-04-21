@@ -36,7 +36,7 @@ namespace ApplicationLayer.Services.UserService
             if (uye != null)
                 return resultDTO;
 
-            if(await _userManager.ChangePasswordAsync(uye, login.Sifre))
+            if(await _userManager.CheckPasswordAsync(uye, login.Sifre))
             {
                 resultDTO.UyeVarmi = true;
                 resultDTO.NormalUyeMi = true;
@@ -49,10 +49,6 @@ namespace ApplicationLayer.Services.UserService
             return resultDTO;
         }
 
-        public Task LoginAsync(YeniUyeDTO yeniUye)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task LogOutAync()
         {
@@ -66,12 +62,16 @@ namespace ApplicationLayer.Services.UserService
             uye.Soyad = yeniUye.Soyad;
             uye.Adres = yeniUye.Adres;
             uye.UserName = yeniUye.KullaniciAdi;
+            uye.Email = yeniUye.EPosta;
 
             PasswordHasher<Uye> passwordHasher = new PasswordHasher<Uye>();
             uye.PasswordHash = passwordHasher.HashPassword(uye, yeniUye.Sifre);
 
-            await _userManager.AddToRoleAsync(uye, "Uye");
+            uye.SecurityStamp = Guid.NewGuid().ToString();
+            uye.ConcurrencyStamp = Guid.NewGuid().ToString();
+
             var result = await _userManager.CreateAsync(uye);
+            await _userManager.AddToRoleAsync(uye, "Uye");
             return result.Succeeded;
 
         }
